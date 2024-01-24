@@ -1,0 +1,27 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:root@localhost:3306/EventDB"
+}
+
+model Event {
+  id       Int      @id @default(autoincrement())
+  title    String
+  description String?
+  date     DateTime
+  location String
+  photoUrl String?
+  users    User[]
+}
+
+model User {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String
+  events Event[]
+}
