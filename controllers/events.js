@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
 
 async function reserve ( req, res) {
   try {
@@ -37,12 +38,12 @@ async function sendConfirmationEmail(userEmail, event){
   const transporter = nodemailer.createTransport({
     service:'gmail',
     auth:{
-      user:'aurelagashi4@gmail.com',
-      pass:'uxuw kytj ivyf pikm'
+      user:process.env.EMAIL_USER,
+      pass:process.env.EMAIL_PASS,
     },
   });
   const mailOptions = {
-    from: 'aurelagashi4@gmail.com',
+    from: process.env.EMAIL_USER,
     to: userEmail,
     subject: `Event booking confirmation -  "${event.title}"`,
      text:`You have reserved the event "${event.title}",${event.description} which will be held with ${event.date} at ${event.location}.
