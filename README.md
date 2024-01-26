@@ -8,7 +8,10 @@ git clone https://github.com/Aurela11/Project-4.git
 cd Project-4
 3. Install packages
 npm install (npm i)
-4. Start the project
+4. You need to create an .env file, and provide the following data:
+     EMAIL_USER=youremail@gmail.com
+       EMAIL_PASS=yourpassword
+5. Start the project
 npm run start
 ------------------------------------------
 Test the project requests with Postman, for example:
